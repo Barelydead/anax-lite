@@ -19,6 +19,13 @@ $app->url     = new \Anax\Url\Url();
 $app->router  = new \Anax\Route\RouterInjectable();
 $app->response = new \Anax\Response\Response();
 $app->view     = new \Anax\View\ViewContainer();
+$app->navbar   = new \CJ\Navbar\Navbar();
+$app->session   = new \CJ\Session\Session();
+
+
+// Make app available to navbar and configure source
+$app->navbar->setApp($app);
+$app->navbar->configure("navbar.php");
 
 // Inject $app into the view container for use in view files.
 $app->view->setApp($app);
@@ -39,6 +46,13 @@ $app->url->setScriptName($app->request->getScriptName());
 // Update url configuration with values from config file.
 $app->url->configure("url.php");
 $app->url->setDefaultsFromConfiguration();
+
+// Assets
+$app->style = $app->url->asset("style/style.css");
+$app->image = $app->url->asset("image/");
+
+
+$app->session->start();
 
 // Load the routes
 require ANAX_INSTALL_PATH . "/config/route.php";

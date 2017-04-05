@@ -11,7 +11,7 @@
     <link href="https://getbootstrap.com/dist/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="style/style.css" rel="stylesheet">
+    <link href="<?= $app->style ?>" rel="stylesheet">
 </head>
 <body>
 

@@ -16,6 +16,7 @@ html {
 	text-align: center;
 	font-size: 10em;
 	font-weight: bold;
+    color: orange;
 	color: rgba(205, 81, 7, 0.5);
     text-transform: uppercase;
 }
@@ -87,4 +88,25 @@ html {
 
 .side-nav ul li {
 
+}
+
+
+/*Session*/
+
+.big-number {
+    font-size: 8em;
+}
+
+.button-list {
+    padding-top: 25px;
+}
+
+/*Cal*/
+
+.day {
+    margin: 10px;
+}
+
+.current {
+    border: 1px solid green;
 }

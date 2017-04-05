@@ -33,6 +33,18 @@ $app->router->add("report", function () use ($app) {
                   ->send();
 });
 
+$app->router->add("calander", function () use ($app) {
+    $app->view->add("custom1/header", ["title" => "Kalender"]);
+    $app->view->add("custom1/navbar");
+    $app->view->add("custom1/cal");
+    $app->view->add("custom1/footer");
+
+    $app->response->setBody([$app->view, "render"])
+                  ->send();
+});
+
+
+
 
 $app->router->add("status", function () use ($app) {
 

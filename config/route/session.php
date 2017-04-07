@@ -20,7 +20,6 @@ $app->router->add("session/increment", function () use ($app) {
     $app->session->dump();
     $sessionURL = $app->url->create("session");
     header("Location: $sessionURL");
-
 });
 
 $app->router->add("session/decrement", function () use ($app) {

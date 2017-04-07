@@ -108,5 +108,46 @@ html {
 }
 
 .current {
-    border: 1px solid green;
+    background-color: salmon;
+}
+
+.sunday {
+    color: red;
+}
+
+.next {
+    float: right;
+}
+
+.cal-button {
+	background-color: #3D435B;
+    color: white;
+	width: 64px;
+	display: inline-block;
+	height: 35px;
+	text-align: center;
+	padding-top: 6px;
+}
+
+.cal-button a {
+    color: #eee;
+}
+
+.button-holder {
+    background-color: salmon
+}
+
+.image-holder {
+    text-align: center;
+    height: 250px;
+}
+
+.image-holder h2 {
+    color: #eee;
+    font-size: 7em;
+    margin: 0 1px 0 0;
+}
+
+.cal {
+    border: 2px solid black;
 }

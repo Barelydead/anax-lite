@@ -11,10 +11,10 @@ class Session
 
     private $name;
 
-    public function __construct($name="MYSESSION")
-   {
-       $this->name = $name;
-   }
+    public function __construct($name = "MYSESSION")
+    {
+        $this->name = $name;
+    }
 
 
     /**
@@ -77,9 +77,9 @@ class Session
     /**
     * Class for starting a session and controlling session variables
     */
-    public function getOnce($key, $value)
+    public function getOnce($key)
     {
-        $tempSession = $_SESSION[$key] = $value;
+        $tempSession = $_SESSION[$key];
         unset($_SESSION[$key]);
         return $tempSession;
     }

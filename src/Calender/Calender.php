@@ -5,7 +5,7 @@ namespace CJ\Calender;
 /*
 *   Calander class
 */
-Class Calender
+class Calender
 {
 
     /*
@@ -13,52 +13,87 @@ Class Calender
     */
     public function __construct()
     {
-        $this->dateTime = New \dateTime();
+        $this->dateTime = new \DateTime();
+        $this->actualDate = new \DateTime();
 
-        $this->months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September",
+        $this->year = $this->getCurrentYear();
+        $this->month = $this->getCurrentMonth();
+
+        $this->months = [null, "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September",
         "Oktober", "November", "December"];
 
-        $this->daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-        $this->days = ["Mon", "Tue", "Wed", "Thr", "Fredag", "Lördag", "Söndag"];
+        $this->daysPerMonth = [null, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     }
 
 
-    public function getCurrentDate() {
-        return $this->dateTime->format("j");
+    public function getCurrentDate()
+    {
+        return $this->dateTime->format("ym");
     }
 
+    public function getCurrentYear()
+    {
+        return $this->dateTime->format("Y");
+    }
 
-    public function getCurrentMonth() {
+    public function getCurrentMonth()
+    {
         return $this->dateTime->format("n");
     }
 
+    public function setNextMonth()
+    {
+        $this->dateTime = $this->dateTime->add(new \DateInterval("P1M"));
+        $this->year = $this->getCurrentYear();
+        $this->month = $this->getCurrentMonth();
+    }
 
-    public function monthStartsOn($year, $month) {
-        $date = New \dateTime("$year-$month-1");
-        return $date->format("N");
+    public function setPrevMonth()
+    {
+        $this->dateTime = $this->dateTime->sub(new \DateInterval("P1M"));
+        $this->year = $this->getCurrentYear();
+        $this->month = $this->getCurrentMonth();
+    }
+
+    public function setCurrentMonth()
+    {
+        $this->dateTime = new \DateTime();
+        $this->year = $this->getCurrentYear();
+        $this->month = $this->getCurrentMonth();
+    }
+
+    public function monthStartsOn()
+    {
+        $date = new \DateTime($this->getCurrentYear() . "-" . $this->getCurrentMonth() . "-1");
+        return $date->format("w");
     }
 
 
-    /*
-    *   @param INT
-    */
-    public function makeTableForMonth() {
-        $monthNr = $this->getCurrentMonth();
+    public function getMonthImage()
+    {
+        return $this->months[$this->month] . ".jpeg?w=1000&h=400&crop-to-fit&area=20,0,0,0";
+    }
 
-        $monthStart = 2;
+
+    public function makeTableForMonth()
+    {
         $html = "<tr>";
+
+        $monthStart = $this->monthStartsOn($this->year, $this->month);
+        $daysThisMonth = $this->daysPerMonth[$this->month];
         $day = 1;
         $counter = 1;
 
-        for ($i = 0; $i <= $this->daysPerMonth[0]; $i++) {
+        for ($i = 1; $i <= $daysThisMonth; $i++) {
             if ($monthStart > $i) {
                 $html .= "<td></td>";
+                $daysThisMonth++;
             } else {
                 ($counter % 7 == 1) ? $html .= "<tr>" : null;
+                ($counter % 7 == 0) ? $sunday = "sunday" : $sunday = "";
 
-                ($this->getCurrentDate() == $day) ? $current = "current" : $current = "";
-                $html .= "<td class='$current'>$day</td>";
+                ($this->actualDate->format("ymj") == $this->getCurrentDate() . $day) ? $current = "current" : $current = "";
+                $html .= "<td class='$current$sunday'>$day</td>";
 
                 ($counter % 7 == 0) ? $html .= "</tr>" : null;
 
@@ -68,13 +103,6 @@ Class Calender
         }
 
         $html .= "</tr>";
-
         return $html;
     }
-
-
 }
-// ($this->getCurrentDate() == $i) ? $current = "current" : $current = "";
-// ($i % 7 == 1) ? $html .= "<tr>" : null;
-// $html .= "<td class='$current'>$i</td>";
-// ($i % 7 == 0) ? $html .= "</tr>" : null;

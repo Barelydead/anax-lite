@@ -37,7 +37,22 @@
 
             <section>
             <a name="kmom02"></a><h2>Kursmoment 02</h2>
-            <p>This is the report.</p>
+
+            <h4>Hur känns det att skriva kod utanför och inuti ramverket, ser du fördelar och nackdelar med de olika sätten?</h4>
+            <p>Hmm, jag är inte riktigt säker på vad man klassar som i och utanför ramverket men koden i sig ser jag ingen större skillnad på. Mer generellt sett så tycker jag vi har ordnat en bra struktur av koden där vi försöker lyfta bort innehållet från PHP-koden och det har jag lyckats till viss del med. Upplägget med att ha configfiler tycker jag också verkar trevligt, det blir väldigt lätt att ändra/utöka sidan efter behov. Det som jag tycker kan bli lite klurigt är felsökningen eftersom att exekveringen av koden inte alltid är solklar. Att hitta i mapstrukturen är också någon som jag lagt en del tid på.   </p>
+
+            <h4>Hur väljer du att organisera dina vyer?</h4>
+            <p>Jag har hittills valt att göra vyerna enkla och rena från php i så stor utsträckning som möjligt. Några av vyerna inkluderas på varje route såsom header, navbar och footer. Jag har än så länge inte lagt så stor tanke bakom strukturen då det har fungerat bra att ha lösa vyer som jag väljer att montera ihop i min router. Men när sidan växer och man får fler undersidor så tror jag att det kan bli nödvändigt att strukturera upp det på ett bättre sätt och kanske göra en template som inkluderar header/footer och försöka få innehållet ännu ett steg ifrån koden.</p>
+
+            <h4>Berätta om hur du löste integreringen av klassen Session.</h4>
+            <p>Jag började med att skapa session objektet med alla tillhörande metoder, inga konstigheter där. För att sedan göra den en del av ramverket så lade jag till session i $app så klassen sedan finns tillgäng att använda. Jag valde också att lägga till session->start() i frontontrollern så att jag slipper starta den på varje route. Jag skapade sedan en ny fil som jag kallar för session och inkluderade i route.php. I increment, decrement och destroy så lade jag koden direkt i routen och använde sedan header(location) för att redirecta tillbaka till /session och i status så använder jag $app->respons för att skicka json.</p>
+
+            <h4>Berätta om hur du löste uppgiften med Tärningsspelet 100/Månadskalendern, hur du tänkte, planerade och utförde uppgiften samt hur du organiserade din kod?</h4>
+            <p>Eftersom att vi har gjort diverse spel i tidigare kurser så tyckte jag det vore kul att göra någonting nytt så det fick bli kalenderuppgiften. All kod som krävs har jag lagt i en ny klass (Calender). Klassen initieras med en lista av alla månader, en lista med dagar per månad, currentdate och currentyear. I klassen finns också en del hjälpmetoder för att kunna sätta hämta info om månad år och dag. Dessa funktioner utgår från PHP-klassen dateTime och använder ->format för att få ut relevant information. För att sedan kunna skriva ut någonting på sidan så har jag gjort en loop som printar ut datumen till en tabell. Att utforma loopen på ett bra sätt tyckte jag var ganska svårt och jag använde mig av modulus operatorn för att ta reda på när det är dags för ny rad samt några hjälpmetoder i klassen för att sätta css klasser på söndagar och aktiv dag. Eftersom att jag ville undvika att använda kod i vyn så valde jag att spara min klass i session så att den sparas mellan sidomladdningar. </p>
+
+            <h4>Några tankar kring SQL så här långt?</h4>
+            <p>Det har gått bra än så länge och det är trevligt att få lite bättre förståelse för hur man kan hämta data på olika sätt. De mesta som jag hittills gått igenom är sånt som jag känner igen från tidigare kurser men jag uppskattar verkligen att köra en rejäl genomgång igen för att få en lite stadigare bas att stå på. </p>
+
             </section>
 
             <section>

@@ -51,7 +51,7 @@ $app->url->setDefaultsFromConfiguration();
 $app->style = $app->url->asset("style/style.css");
 $app->image = $app->url->asset("image/");
 
-
+// Start session
 $app->session->start();
 
 // Load the routes

@@ -17,7 +17,6 @@ $app->router->add("session/increment", function () use ($app) {
         $app->session->set("number", 0);
     }
 
-    $app->session->dump();
     $sessionURL = $app->url->create("session");
     header("Location: $sessionURL");
 });

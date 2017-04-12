@@ -20,12 +20,17 @@ $app->router  = new \Anax\Route\RouterInjectable();
 $app->response = new \Anax\Response\Response();
 $app->view     = new \Anax\View\ViewContainer();
 $app->navbar   = new \CJ\Navbar\Navbar();
-$app->session   = new \CJ\Session\Session();
+$app->session  = new \CJ\Session\Session();
+$app->db       = new \CJ\Database\Database();
 
 
 // Make app available to navbar and configure source
 $app->navbar->setApp($app);
 $app->navbar->configure("navbar.php");
+
+// Make app available to navbar and configure source
+$app->db->setApp($app);
+$app->db->configure("db_config.php");
 
 // Inject $app into the view container for use in view files.
 $app->view->setApp($app);

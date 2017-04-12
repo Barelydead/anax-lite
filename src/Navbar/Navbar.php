@@ -30,9 +30,9 @@ class Navbar implements \Anax\Common\ConfigureInterface, \Anax\Common\AppInjecta
                     $activePage = $this->app->request->getRoute();
 
                     if ($activePage == $url) {
-                        $navHtml .= "<a href='$url'><li class='active'>$key</li></a>";
+                        $navHtml .= "<a href='$url'><li class='active'>" . $val["text"] . "</li></a>";
                     } else {
-                        $navHtml .= "<a href='$url'><li>$key</li></a>";
+                        $navHtml .= "<a href='$url'><li>" . $val["text"] . "</li></a>";
                     }
                 }
             }

@@ -1,5 +1,9 @@
 <?php
-$app->session->has("calender") ? $cal = $app->session->getOnce("calender") : $cal = new \CJ\Calender\Calender();
+if (count($_GET) != 0) {
+    $cal = $app->session->getOnce("calender");
+} else {
+    $cal = new \CJ\Calender\Calender();
+}
 
 (isset($_GET["next"])) ? $cal->setNextMonth() : null;
 (isset($_GET["prev"])) ? $cal->setPrevMonth() : null;
@@ -16,8 +20,9 @@ $app->session->has("calender") ? $cal = $app->session->getOnce("calender") : $ca
             </div>
 
             <div class="button-holder">
-            <span class="cal-button"><a href="?prev=true"><< prev</a></span>
-            <span class="next cal-button"><a href="?next=true">next >></a></span>
+            <div class="cal-button"><a href="?prev=true"><< </a></div>
+            <div class="cal-button"><a href="?current=true">Current</a></div>
+            <div class="cal-button"><a href="?next=true"> >></a></div>
             </div>
 
             <table class="table table-bordered">

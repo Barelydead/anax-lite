@@ -27,5 +27,13 @@ return [
             "text" => "Kalender",
             "route" => "calander",
         ],
+        "login" => [
+            "text" => "Login",
+            "route" => "login",
+        ],
+        "user" => [
+            "text" => "Min sida",
+            "route" => "user",
+        ],
     ]
 ];

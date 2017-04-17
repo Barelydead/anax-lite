@@ -10,6 +10,36 @@ $app->router->add("login", function () use ($app) {
                   ->send();
 });
 
+$app->router->add("change_password", function () use ($app) {
+    $app->view->add("custom1/header", ["title" => "login"]);
+    $app->view->add("custom1/navbar");
+    $app->view->add("login/change_password");
+    $app->view->add("custom1/footer");
+
+    $app->response->setBody([$app->view, "render"])
+                  ->send();
+});
+
+$app->router->add("edit_profile", function () use ($app) {
+    $app->view->add("custom1/header", ["title" => "login"]);
+    $app->view->add("custom1/navbar");
+    $app->view->add("login/edit_profile");
+    $app->view->add("custom1/footer");
+
+    $app->response->setBody([$app->view, "render"])
+                  ->send();
+});
+
+
+$app->router->add("welcome", function () use ($app) {
+    $app->view->add("custom1/header", ["title" => "login"]);
+    $app->view->add("custom1/navbar");
+    $app->view->add("login/welcome");
+    $app->view->add("custom1/footer");
+
+    $app->response->setBody([$app->view, "render"])
+                  ->send();
+});
 
 
 $app->router->add("user", function () use ($app) {
@@ -92,6 +122,8 @@ $app->router->add("validate", function () use ($app) {
                 $app->session->set("user", $userName);
 
                 $welcomeUrl = $app->url->create('welcome');
+
+                $app->cookie->set("savedCookieFromLogin", $userName);
                 header("Location: $welcomeUrl");
             } else {
                 // Redirect to login.php
@@ -102,17 +134,85 @@ $app->router->add("validate", function () use ($app) {
             echo "No such user. <a href='" . $app->url->create('login') . "'>try again</a>";
         }
     }
+});
+
+$app->router->add("handle_edit_user", function () use ($app) {
+    $app->db->connect();
+
+    if (!$app->session->has("user")) {
+        echo "you have to log in to alter your profile";
+    } else {
+        $username = $app->session->get("user");
 
 
+        $name = isset($_POST["name"]) ? htmlentities($_POST["name"]) : null;
+        $age = isset($_POST["age"]) ? htmlentities($_POST["age"]) : null;
+        $profile = isset($_POST["profile"]) ? htmlentities($_POST["profile"]) : null;
+
+        $sql = "UPDATE `anax_users` SET
+    	`name` = '$name',
+        `age` = $age,
+        `profile` = '$profile'
+        WHERE
+        `username` = '$username'";
+
+
+        $app->db->execute($sql, [$name, $age, $profile]);
+
+        echo "Update success!";
+    }
 });
 
 
-$app->router->add("welcome", function () use ($app) {
-    $app->view->add("custom1/header", ["title" => "login"]);
-    $app->view->add("custom1/navbar");
-    $app->view->add("login/welcome");
-    $app->view->add("custom1/footer");
+$app->router->add("logout", function () use ($app) {
+    if ($app->session->has("user")) {
+        $app->session->destroy();
+    }
 
-    $app->response->setBody([$app->view, "render"])
-                  ->send();
+    // Check if session is active
+    $has_session = session_status() == PHP_SESSION_ACTIVE;
+
+    if (!$has_session) {
+        $app->cookie->destroy("savedCookieFromLogin");
+        echo "<p>The session no longer exists. You have successfully logged out!</p>";
+    }
+
+    echo "You are nog logged in yet.";
+});
+
+$app->router->add("handle_change_password", function () use ($app) {
+    $app->db->connect();
+
+    $new_pass = isset($_POST["new_pass"]) ? htmlentities($_POST["new_pass"]) : null;
+    $re_new_pass = isset($_POST["re_new_pass"]) ? htmlentities($_POST["re_new_pass"]) : null;
+    $old_pass = isset($_POST["old_pass"]) ? htmlentities($_POST["old_pass"]) : null;
+
+
+    //logged in?
+    if ($app->session->has("user")) {
+        $username = $app->session->get("user");
+        $oldPassHash = $app->db->getPassHash($username);
+        //old pass correct?
+        if (password_verify($old_pass, $oldPassHash)) {
+            //new pass match?
+            if ($new_pass == $re_new_pass) {
+                $newHash = password_hash($new_pass, PASSWORD_DEFAULT);
+
+                $sql = "UPDATE `anax_users` SET
+                `password` = '$newHash'
+                WHERE `username` = '$username'";
+
+                $app->db->execute($sql);
+
+                echo "successfully updated password for $username";
+
+            } else {
+                echo "passwords dont match";
+            }
+        } else {
+            echo "old password incorrect";
+        }
+    } else {
+        echo "you have to log in to alter your password";
+    }
 });

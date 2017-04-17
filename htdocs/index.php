@@ -21,6 +21,7 @@ $app->response = new \Anax\Response\Response();
 $app->view     = new \Anax\View\ViewContainer();
 $app->navbar   = new \CJ\Navbar\Navbar();
 $app->session  = new \CJ\Session\Session();
+$app->cookie   = new \CJ\Cookie\Cookie();
 $app->db       = new \CJ\Database\Database();
 
 

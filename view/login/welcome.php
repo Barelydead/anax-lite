@@ -4,7 +4,7 @@ if (!$app->session->has("user")) {
     header("Location: $loginURL");
 }
 
- ?>
+?>
 
 <div class="container main">
     <div class="row">

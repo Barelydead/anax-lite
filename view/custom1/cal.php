@@ -11,6 +11,9 @@ if (count($_GET) != 0) {
 ?>
 
 <div class="container main">
+    <div class="page-header">
+        <h1>Calendar</h1>
+    </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1 main cal">
             <div class="">
@@ -20,9 +23,9 @@ if (count($_GET) != 0) {
             </div>
 
             <div class="button-holder">
-            <div class="cal-button"><a href="?prev=true"><< </a></div>
+            <div class="cal-button left"><a href="?prev=true"><< </a></div>
             <div class="cal-button"><a href="?current=true">Current</a></div>
-            <div class="cal-button"><a href="?next=true"> >></a></div>
+            <div class="cal-button right"><a href="?next=true"> >></a></div>
             </div>
 
             <table class="table table-bordered">

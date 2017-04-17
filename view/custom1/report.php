@@ -57,7 +57,21 @@
 
             <section>
             <a name="kmom03"></a><h2>Kursmoment 03</h2>
-            <p>This is the report.</p>
+
+            <h4>Hur kändes det att jobba med PHP PDO, SQL och MySQL?</h4>
+            <p>Det känns roligt att jobbat mot databaser igen måste jag säga. Det är ju lite bekant från htmlPHP men jag har fått en väldigt mycket bättre förståelse för hur allt fungerar nu när vi kikat på hur klasser och objekt används också. Just PDO tyckte jag var ordentligt svårt i första kursen när jag inte var bekant med klassbegreppet. Att vi jobbar med MySQL tycker jag också är ett plus då det verkar vara standard ute i arbetslivet vilket alltid gör att det känns extra motiverande att lösa uppgifterna på ett bra sätt. SQL-kod var jag ganska dålig på när vi startade kursen så SQL-övningen har varit guld för mig och det är väldigt smidigt att kunna gå tillbaka och titta i filen när det är något som inte går som man tänkt sig.</p>
+
+            <h4>Reflektera kring koden du skrev för att lösa uppgifterna, klasser, formulär, integration Anax Lite?</h4>
+            <p>Jag har implementerat två nya klasser, Cookie och Database. Jag har lagt till en del "bra att ha" funktioner i Database som hjälper mig med att skriva ut html table, hämta password hash och liknande. Men för det mesta så  har jag använt mig av executeFetchAll och skrivit SQL-satser i koden. Det har fungerat bra men jag skulle nog ha gjort en User och Admin klass för att underlätta ytterligare. Cookie klassen är en ganska enkel wrapper-Klass och fungerar i stort sätt på samma sätt som Session klassen.</p>
+            <p>Det har blivit många formulär och det är inget svårt i sig men jag tycker att min struktur inte är tillräckligt bra och det har blivit ganska rörigt med alla post-forms sidor som ska skapas och underhållas. Detta är något jag kommer kika på under kursens gång och förhoppningsvis så hittar jag ett bättre sätt att strukturera min kod på. Jag tycker det har blivit för mycket kod i vyerna men och andra sidan så löser det uppgiften.</p>
+
+            <h4>Känner du dig hemma i ramverket, dess komponenter och struktur?</h4>
+            <p>I det stora hela ja. Jag tycker att jag hittar det jag ska att jag kan göra ändringar, förbättringar och tillägg där det behövs. Det saker som jag inte har så bra koll på är det moduler som vi implementerade i kursmoment 1 och hur traits/ConfigureInterface fungerar. </p>
+
+            <h4>Hur bedömmer du svårighetsgraden på kursens inledande kursmoment, känner du att du lär dig något/bra saker?</h4>
+            <p>Det har varit en ganska tuff kurs med mycket att ta in och en del moment som jag har behövt klura på både en och två gånger. Att uppgifterna är kluriga och på en ganska hög nivå uppskattar jag eftersom att jag trots allt är här för att lära mig saker. Däremot så kanske det är lite för många uppgifter att göra i varje moment. Det tar för mycket tid att göra klart allting. Tidsfördelningen mellan de två kurser som vi har nu blir lite skev. Jag måste lägga ungefär 70% av min tid på denna kurs för att hinna med vilket gör att kvaliteten på det jag gör i webapp bli lidande. </p>
+            <p>Svaret på frågan om jag lär mig något är ja. Jag har lärt mig väldigt mycket om hur man jobbar med klasser och objekt, hur man jobbar och till viss del bygger ett ramverk samt fått en mycket bättre förståelse för SQL och hur det kan användas i en PHP-värld. </p>
+
             </section>
 
             <section>

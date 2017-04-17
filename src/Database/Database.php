@@ -7,10 +7,10 @@ namespace CJ\Database;
 */
 class Database implements \Anax\Common\ConfigureInterface, \Anax\Common\AppInjectableInterface
 {
-use \Anax\Common\ConfigureTrait;
-use \Anax\Common\AppInjectableTrait;
+    use \Anax\Common\ConfigureTrait;
+    use \Anax\Common\AppInjectableTrait;
 
-private $pdo;
+    private $pdo;
 
 
     /**
@@ -130,5 +130,62 @@ private $pdo;
             $this->statementException($sth, $sql, $param);
         }
         return count($res) > 0;
+    }
+
+
+    /**
+     * Return table body for users
+     *
+     * @return string
+     */
+    public function tableUsersSortedBy($col, $order = "DESC", $limit = 10, $offset = 0, $param = [])
+    {
+        $sql = "SELECT * FROM `anax_users`
+                ORDER BY $col $order
+                LIMIT $limit
+                OFFSET $offset";
+
+        $sth = $this->execute($sql, $param);
+        $res = $sth->fetchAll();
+        if ($res === false) {
+            $this->statementException($sth, $sql, $param);
+        }
+
+        $html = "";
+        foreach ($res as $user) {
+            $html .= "</tr><th>$user->username</th>
+                <th>$user->name</th>
+                <th>$user->age</th>
+                <th>$user->profile</th>
+                <th><a href='/~chju16/dbwebb-kurser/oophp/me/anax-lite/htdocs/edit_user_profile?user=$user->username'>Edit</th>
+                </tr>";
+        }
+
+        return $html;
+    }
+
+
+    public function getPassHash($user)
+    {
+        $sql = "SELECT `password` FROM `anax_users`
+        WHERE `username` = '$user'";
+
+        $res = $this->executeFetchAll($sql);
+
+        return $res[0]->password;
+    }
+
+    public function searchUser($search)
+    {
+        $sql = "SELECT * FROM `anax_users`
+                WHERE
+                `username` LIKE '%$search%' OR
+                `name` LIKE '%$search%' OR
+                `profile` LIKE '%$search%' OR
+                `age` LIKE '%$search%'";
+
+        $res = $this->executeFetchAll($sql);
+
+        return $res;
     }
 }

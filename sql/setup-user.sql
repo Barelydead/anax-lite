@@ -1,14 +1,18 @@
-CREATE TABLE `users`(
-	`id` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-	`username` VARCHAR(100),
-    `password` VARCHAR(255),
+CREATE TABLE `anax_users`(
+	`username` VARCHAR(255) PRIMARY KEY NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
     `name` VARCHAR(100) DEFAULT NULL,
+    `age` INT DEFAULT NULL,
     `profile` TEXT DEFAULT NULL
 );
 
-INSERT INTO `users`(`username`, `password`)
+INSERT INTO `anax_users`(`username`, `password`)
 	VALUES
-    ('testuser', 'testpass')
+    ('ole', 'dole'),
+    ('gustav', 'hash'),
+    ('markus', 'ee'),
+    ('erika', 'pika'),
+    ('anna', 'sanan')
 ;
 
-SELECT * FROM users;
+SELECT * FROM anax_users;

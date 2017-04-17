@@ -1,7 +1,14 @@
+<?php
+$app->session->has("user") ? $user = "logged in as: " . $app->session->get("user") : $user = "";
+$app->session->has("admin") ? $user = "admin: " . $app->session->get("admin") : $user = "";
+$logoutUrl = $app->url->create("logout");
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12 top-nav">
             <?= $app->navbar->getHTML(); ?>
+            <p class="active-user"><?=$user?></p>
         </div>
     </div>
     <div class="row">

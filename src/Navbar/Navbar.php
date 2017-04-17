@@ -27,13 +27,21 @@ class Navbar implements \Anax\Common\ConfigureInterface, \Anax\Common\AppInjecta
                     $navHtml .= '<nav class="' . $val . '"><ul>';
                 } else {
                     $url = $this->app->url->create($val["route"]);
-                    $activePage = $this->app->request->getRoute();
+                    $activePage = $this->app->request->getCurrentUrl();
+                    $activePage == $url ? $active = "active" : $active = "";
 
-                    if ($activePage == $url) {
-                        $navHtml .= "<a href='$url'><li class='active'>" . $val["text"] . "</li></a>";
-                    } else {
-                        $navHtml .= "<a href='$url'><li>" . $val["text"] . "</li></a>";
+                    $navHtml .= "<div class='main-button-holder'>";
+                    $navHtml .= "<a href='$url'><li class='$active'>" . $val["text"] . "</li></a>";
+
+                    if (isset($val["sub"])) {
+                        $navHtml .= "<div class='sub'>";
+                        foreach ($val["sub"] as $subArray) {
+                            $navHtml .= "<a href='" . $subArray["route"] . "' class='sublink'>" . $subArray["text"] . "</a>";
+                        }
+                        $navHtml .= "</div>";
                     }
+
+                    $navHtml .= "</div>";
                 }
             }
         }

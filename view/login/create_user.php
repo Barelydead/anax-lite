@@ -1,7 +1,7 @@
 <?php
 $postHandler = $this->app->url->create("handle_user");
 
- ?>
+?>
 
 <div class="container main">
     <div class="row">

@@ -17,7 +17,7 @@ $offset = $limit * ($page - 1);
 
 ?>
 
-<div class="container">
+<div class="container main">
     <div class="site-header">
         <h1>User</h1>
         <p>Users per page:

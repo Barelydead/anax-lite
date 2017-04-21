@@ -23,7 +23,10 @@ $app->navbar   = new \CJ\Navbar\Navbar();
 $app->session  = new \CJ\Session\Session();
 $app->cookie   = new \CJ\Cookie\Cookie();
 $app->db       = new \CJ\Database\Database();
+$app->textfilter = new \CJ\Textformat\Textformat();
 
+
+$app->textfilter->setApp($app);
 
 // Make app available to navbar and configure source
 $app->navbar->setApp($app);

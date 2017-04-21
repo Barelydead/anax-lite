@@ -16,7 +16,7 @@ if (isset($_GET["search"])) {
 ?>
 
 
-<div class="container">
+<div class="container main">
     <div class="site-header">
         <h1>Search User</h1>
     </div>

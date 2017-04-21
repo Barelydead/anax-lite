@@ -54,6 +54,24 @@ class Database implements \Anax\Common\ConfigureInterface, \Anax\Common\AppInjec
         return $res;
     }
 
+    /**
+     * Do SELECT with optional parameters and return a resultset.
+     *
+     * @param string $sql   statement to execute
+     * @param array  $param to match ? in statement
+     *
+     * @return First object with resultset
+     */
+    public function executeFetch($sql, $param = [])
+    {
+        $sth = $this->execute($sql, $param);
+        $res = $sth->fetch();
+        if ($res === false) {
+            $this->statementException($sth, $sql, $param);
+        }
+        return $res;
+    }
+
 
 
     /**

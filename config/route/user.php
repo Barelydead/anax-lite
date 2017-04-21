@@ -165,7 +165,7 @@ $app->router->add("handle_edit_user", function () use ($app) {
 
 
 $app->router->add("logout", function () use ($app) {
-    if ($app->session->has("user")) {
+    if ($app->session->has("user") || $app->session->has("admin")) {
         $app->session->destroy();
     }
 
@@ -174,7 +174,7 @@ $app->router->add("logout", function () use ($app) {
 
     if (!$has_session) {
         $app->cookie->destroy("savedCookieFromLogin");
-        echo "<p>The session no longer exists. You have successfully logged out!</p>";
+        $app->redirect("");
     }
 
     echo "You are nog logged in yet.";

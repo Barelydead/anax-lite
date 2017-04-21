@@ -81,7 +81,7 @@ return [
                 ],
                 "Logout" => [
                     "text" => "logout",
-                    "route" => "admin_login"
+                    "route" => "logout"
                 ],
                 "view_users" => [
                     "text" => "view users",
@@ -91,6 +91,32 @@ return [
                     "text" => "search user",
                     "route" => "search_user"
                 ]
+            ]
+        ],
+        "Content" => [
+            "text" => "Innehåll",
+            "route" => "content/view",
+            "sub" => [
+                "admin table" => [
+                    "text" => "View admin table",
+                    "route" => "content/view_content"
+                ],
+                "View" => [
+                    "text" => "View published pages",
+                    "route" => "content/view"
+                ],
+                "Blog" => [
+                    "text" => "Blog",
+                    "route" => "content/blog"
+                ],
+                "Add" => [
+                    "text" => "Add content",
+                    "route" => "content/add_content"
+                ],
+                "filter" => [
+                    "text" => "Text filter preview",
+                    "route" => "content/test_transform"
+                ],
             ]
         ]
     ]

@@ -36,7 +36,8 @@ class Navbar implements \Anax\Common\ConfigureInterface, \Anax\Common\AppInjecta
                     if (isset($val["sub"])) {
                         $navHtml .= "<div class='sub'>";
                         foreach ($val["sub"] as $subArray) {
-                            $navHtml .= "<a href='" . $subArray["route"] . "' class='sublink'>" . $subArray["text"] . "</a>";
+                            $subUrl = $this->app->url->create($subArray["route"]);
+                            $navHtml .= "<a href='" . $subUrl . "' class='sublink'>" . $subArray["text"] . "</a>";
                         }
                         $navHtml .= "</div>";
                     }

@@ -2,3 +2,4 @@
 /build
 /cache
 /vendor
+/config/db_config.php

@@ -72,7 +72,6 @@ $app->router->add("content/view", function () use ($app) {
     } else {
         $app->redirect("content/view_pages");
     }
-
 });
 
 $app->router->add("content/blog", function () use ($app) {
@@ -105,13 +104,10 @@ $app->router->add("content/blog", function () use ($app) {
 
     $app->response->setBody([$app->view, "render"])
                   ->send();
-
-
 });
 
 
 $app->router->add("content/test_transform", function () use ($app) {
 
     $app->render("Filter preview", "content/test_transform");
-
 });

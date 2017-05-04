@@ -99,17 +99,17 @@
             <a name="kmom05"></a><h2>Kursmoment 05</h2>
 
             <h4>Gick det bra att komma igång med det vi kallar programmering av databas, med transaktioner, lagrade procedurer, triggers, funktioner?</h4>
-            <p>Det gick bra att komma igång med små exempelprogram då artiklarna var väldigt tydliga och lätta att följa. Att komma igång med uppgiften var dock svårare. Jag hade svårt att veta vart jag skulle börja och hur jag skulle bygga upp allting. Så jag starade med det jag kände att jag hade koll på vilket var att skapa alla tabeller jag behövde för själv webshoppen. När tabellerna var på plats så funderade jag över vilka operationer som skulle kunna återanvändas samt vilka som är lite mer komplexa att utföra. Utifrån det jag kom på så skapade jag triggers och procedurer.</p>
+            <p>Det gick bra att komma igång med små exempelprogram då artiklarna var väldigt tydliga och lätta att följa. Att komma igång med uppgiften var dock svårare. Jag hade problem med att veta vart jag skulle börja och hur jag skulle bygga upp allting. Så jag starade med det jag kände att jag hade koll på vilket var att skapa alla tabeller som behövs för webshoppen. När tabellerna var på plats så funderade jag över vilka operationer som skulle kunna återanvändas samt vilka som är lite mer komplexa att utföra. Utifrån det jag kom på så skapade jag triggers och procedurer.</p>
 
             <h4>Hur är din syn på att programmera på detta viset i databasen?</h4>
-            <p>Jag tror det kan vara ett fantastiskt verktyg att ha. Mycket av det man gör när man skapar en webbplats kopplas ju till databasen så att kunna förenkla kopplingen mellan databas och webbplats känns väldigt trevligt. De gör att PHP-koden blir mer kompakt och läsbar, och jag tror att man i kan eliminera många vanliga fel genom att använda procedurer. </p>
+            <p>Jag tror det kan vara ett fantastiskt verktyg att ha. Mycket av det man gör när man skapar en webbplats kopplas ju till en databas, så att kunna förenkla kopplingen mellan databas och webbplats känns väldigt trevligt. De gör att PHP-koden blir mer kompakt och läsbar, och jag tror att man i kan eliminera många vanliga fel genom att använda sig av mer programmering i databasen.  </p>
 
             <h4>Några reflektioner kring din kod för backenden till webbshopen?</h4>
             <p>Jag skapade alla tabeller själv men hade exmeplet som en mall att gå efter. Jag valde att göra tabellerna själv för att jag ville förstå hur man kan bygga upp kopplingstabeller och hur man sedan kan använda dessa. Det var en bra övning i sig men det tog längre tid än jag hade hoppats så jag skippade att göra tabeller för lagerhållning osv. Vad gäller kundvagnen så har jag gjort 3 procedurer som löser det man behöver för att skapa en kudnvagn, lägga till produkter och göra kundvagn till order. Detta är det som varit svårast då jag behövde implmentera loopar i procedurerna vilket jag tyckte var ganska krångligt.    </p>
             <p>Det finns nog en hel del som man skulle kunna göra bättre men med tanke på att det är första gången jag gjort något liknande så känner jag mig relativt nöjd över hur de fungerar. </p>
 
             <h4>Något du vill säga om koden generellt i och kring Anax Lite?</h4>
-            <p></p>
+            <p>Jag tycker att det går bra att jobba med ramverker och jag har lärt mig hur man hittar runt och vart saker och ting ska finnas. Däremot så finns det väldigt mycket i koden som jag skulle behhöva städa upp. Min kod är för tillfället inte enhetlig alls. Jag har använt olika lösningar på liknande problem allt eftersom att kursen har gått och man lärt sig nya tekniker. Detta gör att det blir väldigt jobbigt när man går tillbaks och ska ändra nått som man inte har färskt i minnet. </p>
 
 
             </section>

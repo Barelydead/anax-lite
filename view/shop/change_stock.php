@@ -1,7 +1,6 @@
 <?php
 
 if (isset($_POST["change"])) {
-
     $units = getPost("units");
 
     $app->shop->changeStock($units, $data->productId);

@@ -90,6 +90,10 @@ return [
                 "search_user" => [
                     "text" => "search user",
                     "route" => "search_user"
+                ],
+                "add_user" => [
+                    "text" => "add user",
+                    "route" => "add_user"
                 ]
             ]
         ],
@@ -118,6 +122,10 @@ return [
                     "route" => "content/test_transform"
                 ],
             ]
+        ],
+        "Webshop" => [
+            "text" => "Webshop",
+            "route" => "shop/view_products"
         ]
     ]
 ];

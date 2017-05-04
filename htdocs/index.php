@@ -13,20 +13,22 @@ require ANAX_INSTALL_PATH . "/config/error_reporting.php";
 require ANAX_INSTALL_PATH . "/vendor/autoload.php";
 
 // Add all resources to $app
-$app = new \CJ\App\App();
-$app->request = new \Anax\Request\Request();
-$app->url     = new \Anax\Url\Url();
-$app->router  = new \Anax\Route\RouterInjectable();
-$app->response = new \Anax\Response\Response();
-$app->view     = new \Anax\View\ViewContainer();
-$app->navbar   = new \CJ\Navbar\Navbar();
-$app->session  = new \CJ\Session\Session();
-$app->cookie   = new \CJ\Cookie\Cookie();
-$app->db       = new \CJ\Database\Database();
-$app->textfilter = new \CJ\Textformat\Textformat();
+$app                = new \CJ\App\App();
+$app->request       = new \Anax\Request\Request();
+$app->url           = new \Anax\Url\Url();
+$app->router        = new \Anax\Route\RouterInjectable();
+$app->response      = new \Anax\Response\Response();
+$app->view          = new \Anax\View\ViewContainer();
+$app->navbar        = new \CJ\Navbar\Navbar();
+$app->session       = new \CJ\Session\Session();
+$app->cookie        = new \CJ\Cookie\Cookie();
+$app->db            = new \CJ\Database\Database();
+$app->textfilter    = new \CJ\Textformat\Textformat();
+$app->shop          = new \CJ\Shop\Shop();
 
-
+// Make app available to classes
 $app->textfilter->setApp($app);
+$app->shop->setApp($app);
 
 // Make app available to navbar and configure source
 $app->navbar->setApp($app);

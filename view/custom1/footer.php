@@ -4,7 +4,7 @@ $sql = "SELECT * FROM `anax_content` WHERE type = ?";
 
 $tryp = $app->db->executeFetchAll($sql, ["block"]);
 
- ?>
+?>
 
 
 <div class="container">

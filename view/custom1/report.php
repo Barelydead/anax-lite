@@ -76,7 +76,23 @@
 
             <section>
             <a name="kmom04"></a><h2>Kursmoment 04</h2>
-            <p>This is the report.</p>
+
+            <h4>Finns något att säga kring din klass för texfilter, eller rent allmänt om formattering och filtrering av text som sparas i databasen av användaren?</h4>
+            <p>Jag har valt att inte ha någon sanering av det som skrivs till databasen utan har istället sanering av texten innan den skrivs ut till hemsidan. Nu i efterhand så tycker jag att det skulle varit bättre att göra tvärtom eftersom att saneringen då bara behöver ske på ett ställe. Nu krävs det att man sanerar texten på alla ställen där den kan tänkas skriva ut. Filterklassen är gjord med de metoder som efterfrågades i uppgiften. Jag gav mig på att skriva makeClickable metoden själv för att fräscha upp minnet i hur man använder regexp vilket var en trevlig övning. I övrigt så har jag tagit koden från exemplet. </p>
+
+            <h4>Berätta hur du tänkte när du strukturerade klasserna och databasen för webbsidor och bloggposter?</h4>
+            <p>Strukturen på databasen har jag tagit helt och hållet från uppgiften då jag ville vara säker på att jag fick med allt som var nödvändigt. Vad gäller koden så har jag skapat en del hjälpfunktioner som som skapar tabeller och tar hand om formulärdata. Det har jag lagt i src/functions. Tyvärr så det återigen blivit mer kod i vyerna än vad jag hade önskat och det beror främst på att jag inte skapat någon Content klass. Istället har jag använt databasklassen och skrivit SQL-frågorna direkt i koden. </p>
+
+            <h4>Förklara vilka routes som används för att demonstrera funktionaliteten för webbsidor och blogg (så att en utomstående kan testa).</h4>
+            <p>De routsen som visar innehållet är content/view_pages och content/blog. Jag har lagt in navigering till dessa routes i navbaren. För content med typ block så har jag lagt till det i footern där jag gjort en triptych. Det innehållet är skrivet i markdown.</p>
+
+            <h4>Hur känns det att dokumentera databasen så här i efterhand?</h4>
+            <p>Det känns bra och vettigt. Hittills så har vi gjort enkla databaser där de olika tabellerna har minimal koppling till varandra. När detta växer och databasen får fler tabeller med störra koppling så tror jag att man snabbt kan tappa bort sig. I det läget så kan det nog vara väldigt trevligt att ha en beskrivning och/eller grafisk representation av databasen som man kan gå tillbaks och titta på. Att dokumentera uppläget är ju också relevant för projekt där man är fler än en person som jobbar med databasen.</p>
+
+            <h4>Om du är självkritisk till koden du skriver i Anax Lite, ser du förbättringspotential och möjligheter till alternativ struktur av din kod?</h4>
+            <p>Ja jag skulle definitvt kunna jobba mer med klasser och skapa metoder istället för att skriva kod rakt upp och ner i routsen/vyerna. Problemet med det har varit att uppgifterna har kännts stora och det är svårt att förutse vilka metoder och klasser som kommer behövas i förväg. Av den anledningen så har jag fokuserat (för mycket) på att göra klart sidan efter specifikationen och inte tänkt särskilt mycket på att skapa återanvändbar kod. </p>
+
+
             </section>
 
             <section>

@@ -29,18 +29,33 @@ function getTableBodyForPages($array, $app)
     $html = "";
     $url = $app->url->create("content/view");
     foreach ($array as $row) {
-        $html .= "<tr>
-            <td><a href='$url?path=$row->path'>$row->title</a></td>
-            <td>$row->id</td>
-            <td>$row->path</td>
-            <td>$row->slug</td>
-            <td>$row->ingress</td>
-            <td>$row->published</td>
-            <td>$row->created</td>
-            <td>$row->updated</td>
-            <td>$row->deleted</td>
-            <td>$row->status</td>
-        </tr>";
+        if ($row->status != "isPublished") {
+            $html .= "<tr class='unpublished'>
+                <td>$row->title</a></td>
+                <td>$row->id</td>
+                <td>$row->path</td>
+                <td>$row->slug</td>
+                <td>$row->ingress</td>
+                <td>$row->published</td>
+                <td>$row->created</td>
+                <td>$row->updated</td>
+                <td>$row->deleted</td>
+                <td>$row->status</td>
+            </tr>";
+        } else {
+            $html .= "<tr>
+                <td><a href='$url?path=$row->path'>$row->title</a></td>
+                <td>$row->id</td>
+                <td>$row->path</td>
+                <td>$row->slug</td>
+                <td>$row->ingress</td>
+                <td>$row->published</td>
+                <td>$row->created</td>
+                <td>$row->updated</td>
+                <td>$row->deleted</td>
+                <td>$row->status</td>
+            </tr>";
+        }
     }
 
     return $html;

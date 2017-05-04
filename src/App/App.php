@@ -16,11 +16,11 @@ class App
     }
 
 
-    public function render($title, $view)
+    public function render($title, $view, $data = null)
     {
         $this->view->add("custom1/header", ["title" => "$title"]);
         $this->view->add("custom1/navbar");
-        $this->view->add("$view");
+        $this->view->add("$view", ["data" => $data]);
         $this->view->add("custom1/footer");
 
         $this->response->setBody([$this->view, "render"])
@@ -75,7 +75,7 @@ EOD;
      *
      * @return string with links to order by column.
      */
-    public function orderby2($column, $route)
+    public function orderby2($column)
     {
         $asc = $this->mergeQueryString(["orderby" => $column, "order" => "asc"]);
         $desc = $this->mergeQueryString(["orderby" => $column, "order" => "desc"]);

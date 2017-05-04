@@ -22,7 +22,8 @@ class Textformat implements \Anax\Common\AppInjectableInterface
     /*
     * Converts and returns text with /n, /r to <br>
     */
-    public function convertBreak($text) {
+    public function convertBreak($text)
+    {
         return nl2br($text);
     }
 
@@ -30,7 +31,8 @@ class Textformat implements \Anax\Common\AppInjectableInterface
     /*
     *
     */
-    public function bbcode($text) {
+    public function bbcode($text)
+    {
         $patterns = [
             '/\[b\](.*?)\[\/b\]/is',
             '/\[i\](.*?)\[\/i\]/is',
@@ -55,7 +57,8 @@ class Textformat implements \Anax\Common\AppInjectableInterface
     /*
     *
     */
-    public function makeClickable($text) {
+    public function makeClickable($text)
+    {
         $patterns = [
             "/(http:\/\/)\S+/",
             "/(https:\/\/)\S+/"
@@ -89,7 +92,8 @@ class Textformat implements \Anax\Common\AppInjectableInterface
     * @params $text(string), $filter(comma seperated string)
     * returns filtered text string
     */
-    public function filter($text, $csvfilter) {
+    public function filter($text, $csvfilter)
+    {
         $filterArray = explode(",", $csvfilter);
 
 
@@ -117,6 +121,5 @@ class Textformat implements \Anax\Common\AppInjectableInterface
         }
 
         return $text;
-
     }
 }

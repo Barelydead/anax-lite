@@ -52,9 +52,15 @@ $app->router->add("content/view", function () use ($app) {
     if (isset($_GET["path"])) {
         $path = htmlentities(getGet("path"));
 
-        $sql = "SELECT * FROM `anax_content` WHERE path = ? and type = 'page'";
+        $sql = "SELECT * FROM `anax_content`
+        WHERE path = ?
+        and type = ?";
 
-        $content = $app->db->executeFetch($sql, [$path]);
+        $content = $app->db->executeFetch($sql, [$path, "page"]);
+
+        if (isset($content->deleted)) {
+            $app->redirect("content/view_pages");
+        }
 
         $app->view->add("custom1/header", ["title" => "$content->title"]);
         $app->view->add("custom1/navbar");

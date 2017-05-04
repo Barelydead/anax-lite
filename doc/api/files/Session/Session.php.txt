@@ -1,0 +1,104 @@
+<?php
+
+
+namespace CJ\Session;
+
+/**
+* Class for starting a session and controlling session variables
+*/
+class Session
+{
+
+    private $name;
+
+    public function __construct($name = "MYSESSION")
+    {
+        $this->name = $name;
+    }
+
+
+    /**
+    * Start the sesssion
+    */
+    public function start()
+    {
+        session_name($this->name);
+
+        if (!empty(session_id())) {
+            session_destroy();
+        }
+        session_start();
+    }
+
+    /**
+    * Set session name
+    */
+    public function setName($name)
+    {
+        session_name($name);
+    }
+
+
+    /**
+    * Get value from session
+    */
+    public function get($key)
+    {
+        return (self::has($key)) ? $_SESSION[$key] : null;
+    }
+
+    /**
+    * Set value to session
+    */
+    public function set($key, $value)
+    {
+        $_SESSION[$key] = $value;
+    }
+
+    /*
+    * Check if a session value exists
+    */
+    public function has($key)
+    {
+        return array_key_exists($key, $_SESSION);
+    }
+
+    /*
+    *   Delete value from session
+    */
+    public function delete($key)
+    {
+        if (self::has($key)) {
+            unset($_SESSION[$key]);
+        }
+    }
+
+
+    /**
+    * Class for starting a session and controlling session variables
+    */
+    public function getOnce($key)
+    {
+        $tempSession = $_SESSION[$key];
+        unset($_SESSION[$key]);
+        return $tempSession;
+    }
+
+    /**
+    * Dump the session
+    */
+    public function dump()
+    {
+        var_dump($_SESSION);
+    }
+
+
+    /**
+    * Destroy session
+    */
+    public function destroy()
+    {
+        session_destroy();
+    }
+}
+

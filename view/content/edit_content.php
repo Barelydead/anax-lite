@@ -14,7 +14,6 @@ $params = getPost(["title",
                 "id"]);
 
 if (isset($_POST["editContent"])) {
-
     if (!$params["slug"]) {
         $autoSlug = $app->url->slugify($params["title"]);
 

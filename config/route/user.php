@@ -91,13 +91,10 @@ $app->router->add("handle_user", function () use ($app) {
 
             $sql = "INSERT INTO `anax_users`(`username`, `password`, `name`, `age`)
             	VALUES
-                ('$userName',
-                '$passHash',
-                '$name',
-                $age)";
+                (?, ?, ?, ?)";
 
-            $app->db->execute($sql);
-            echo "Succsess! Go to login page <a href='$loginUrl'>here</a>";
+            $app->db->execute($sql, [$userName, $passHash, $name, $age]);
+            $app->redirect("login");
         } else {
             echo "Passwords does not match <a href='$newUserUrl'>try again</a>";
         }
@@ -120,6 +117,8 @@ $app->router->add("validate", function () use ($app) {
             // Verify user password
             if (password_verify($pass, $get_hash)) {
                 $app->session->set("user", $userName);
+                $app->session->delete("admin");
+
 
                 $welcomeUrl = $app->url->create('welcome');
 
@@ -159,7 +158,7 @@ $app->router->add("handle_edit_user", function () use ($app) {
 
         $app->db->execute($sql, [$name, $age, $profile]);
 
-        echo "Update success!";
+        $app->redirect("user");
     }
 });
 
@@ -177,7 +176,7 @@ $app->router->add("logout", function () use ($app) {
         $app->redirect("");
     }
 
-    echo "You are nog logged in yet.";
+    $app->redirect("");
 });
 
 $app->router->add("handle_change_password", function () use ($app) {
@@ -205,7 +204,6 @@ $app->router->add("handle_change_password", function () use ($app) {
                 $app->db->execute($sql);
 
                 echo "successfully updated password for $username";
-
             } else {
                 echo "passwords dont match";
             }

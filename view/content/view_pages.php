@@ -14,7 +14,7 @@ WHERE type=?";
 
 $resultset = $app->db->executeFetchAll($sql, ["page"]);
 
- ?>
+?>
 
 
  <div class="container main">

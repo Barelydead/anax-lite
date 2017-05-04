@@ -22,6 +22,10 @@ $app->router->add("admin_welcome", function () use ($app) {
     $app->render("Welcome", "admin/admin_welcome");
 });
 
+$app->router->add("add_user", function () use ($app) {
+    $app->render("Welcome", "admin/add_user");
+});
+
 
 $app->router->add("postform_admin_edit", function () use ($app) {
     $app->db->connect();
@@ -42,7 +46,6 @@ $app->router->add("postform_admin_edit", function () use ($app) {
 
         $app->db->execute($sql, ["name", "age", "profile"]);
 
-        echo "update success";
         $app->redirect("view_user");
     }
 
@@ -80,8 +83,7 @@ $app->router->add("postform_admin_edit", function () use ($app) {
 
         $app->db->execute($sql);
 
-        echo "successfully removed user";
-        $app->redirect("view_user");
+        $app->redirect("view_users");
     }
 });
 
@@ -98,6 +100,7 @@ $app->router->add("admin_validate", function () use ($app) {
             $get_hash = $app->db->executeFetchAll("SELECT password FROM `anax_admin` WHERE `admin_name` = '$userName'")[0]->password;
             // Verify user password
             if (password_verify($pass, $get_hash)) {
+                $app->session->delete("user");
                 $app->session->set("admin", $userName);
 
                 $welcomeUrl = $app->url->create('admin_welcome');

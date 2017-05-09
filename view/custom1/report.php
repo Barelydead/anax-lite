@@ -116,7 +116,36 @@
 
             <section>
             <a name="kmom06"></a><h2>Kursmoment 06</h2>
-            <p>This is the report.</p>
+            <h4>Vad du bekant med begreppet index i databaser sedan tidigare?</h4>
+
+            <p>Nej det är inget jag har hört talas om innan detta kursmoment. Primary key har vi ju kikat på tidigare men jag har aldrig riktigt fungerat på varför man använder det. Jag tyckte att det var kul att förstå lite bättre vad som händer när man ställen en fråga till databasen och hur man kan förbättra resultatet.</p>
+
+            <p>Det som jag tyckte var lite tråkigt är att vi inte har en databas av den storleken som behövs för att kunna se resultat av indexering.</p>
+
+            <h4>Berätta om hur du jobbade i uppgiften om index och vilka du valde att lägga till och skillnaden före/efter. </h4>
+
+            <p>Jag började med att snabbt kika igenom koden i anax för att se vilka tabeller och rader som används flitigt och skulle kunna dra fördel av att ha index.</p>
+
+            <p>Jag valde att lägga till index på type raden i tabellen content. Det är någon som används mer eller mindre vid varje fråga för att filtrera svaren. Innan index så behövde databasen göra en full table scan vid varje request och efter index så använde den bara de efterfrågade raderna.</p>
+
+            <p>Jag valde att lägga till ett index på users tabellen också. Jag hade redan satt username till primary key men jag tycker det kan vara relevant att söka efter namn också. Därför ville jag lägga till en FULLTEXT index på namn raden men tyvärr så fanns det inget stöd för det på min tabell typ.
+            Jag lade istället till ett vanligt index för att åtminstonde kunna göra sökningar på hela strängen.</p>
+
+            <p>Det sista index jag lade till var i produkttabellen och det blev på title raden. Det känns relevant att man ska kunna göra sökningar på varornas namn och även här hade jag önskat att ha en FULLTEXT INDEX men fick nöja mig med ett vanligt index.</p>
+
+            <h4>Har du tidigare erfarenheter av att skriva kod som testar annan kod? </h4>
+
+            <p>Den erfarenheten jag har kommer från python kursen då vi använde unittest för att bygga testfall. Att göra det i PHP var ingen större skillnad så det gick ganska bra att komma igång. Det som jag inte har erfarenhet av är code coverage och jag tycker det är väldigt mycket roligare att skriva testfall när man kan se exakt vilken del av koden som körs. Det känns roligare helt enkelt när man får ett kvitto på vad man har gjort.</p>
+
+            <h4>Hur ser du på begreppet enhetstestning och att skriva testbar kod? </h4>
+
+            <p>Jag har lite blandade känslor vad gäller den typen av testning vi har gjort. Det som jag gillar är att det blir enklare för personer som inte har sett koden tidigare att få ett grepp om vad som fungerar och hur koden är uppbyggd. Det blir som en startpunkt för en utomstående att hoppa in på.</p>
+
+            <p>Det som jag tycker att enhetstest av den typen vi gjort inte fungerar så bra för att upptäcka fel i koden. När man vet hur koden fungerar så blir testfallen lätt uppbyggda på ett sådant sätt att fel inte upptäcks. Så om syftet är att kontrollera att koden fungerar enligt en viss specifikation så tror jag att det fungerar bättre om man inte har så bra koll på koden sedan tidigare. </p>
+
+            <h4>Hur gick det att hitta testbar kod bland dina klasser i Anax Lite? </h4>
+
+            <p>Det gick fint, jag valde att testa TextFormat- och Calenederklasserna. De var de klasser som inte hade några extra beroenden och var därför det som lämpade sig bäst för testning. Jag lyckades uppnå 100% för både klasserna utan att spendera allt för mycket tid. </p>
             </section>
 
             <section>

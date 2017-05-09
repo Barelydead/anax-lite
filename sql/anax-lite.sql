@@ -185,7 +185,8 @@ CREATE TABLE `anax_content` (
   `deleted` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `path` (`path`),
-  UNIQUE KEY `slug` (`slug`)
+  UNIQUE KEY `slug` (`slug`),
+  KEY `type_name` (`type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -268,8 +269,8 @@ CREATE TABLE `anax_orderRow` (
   `units` int(11) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `product` (`product`),
   KEY `order` (`order`),
+  KEY `prod_index` (`product`),
   CONSTRAINT `anax_orderRow_ibfk_1` FOREIGN KEY (`product`) REFERENCES `anax_product` (`id`),
   CONSTRAINT `anax_orderRow_ibfk_2` FOREIGN KEY (`order`) REFERENCES `anax_order` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
@@ -321,7 +322,9 @@ CREATE TABLE `anax_product` (
   `category` char(40) DEFAULT NULL,
   `img` varchar(100) DEFAULT 'default.png',
   `active_product` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `name_index` (`title`),
+  KEY `cat_index` (`category`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -428,7 +431,8 @@ CREATE TABLE `anax_users` (
   `name` varchar(100) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `profile` text,
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`username`),
+  KEY `name_index` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -789,4 +793,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-04 14:14:50
+-- Dump completed on 2017-05-09 12:15:18

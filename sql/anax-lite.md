@@ -14,3 +14,10 @@ Användarinformation såsom användarnamn, lösenord, namn mm. Har också inform
 
 ### anax_admin
 Admininfo. Användarnamn Lösenord och behörighetsnivå.
+
+### anax webshop
+Jag har lagt till flertalet tabeller som fungerar som grunden till en webshop. Detta utgår framförallt ifrån tabellen anax_product som är produkttabellen.
+
+
+### index
+Jag har adderat index på platser som ofta används för filtrering av sökfrågorna.

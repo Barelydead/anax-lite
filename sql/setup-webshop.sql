@@ -37,6 +37,13 @@ VALUES
 ;
 
 
+-- Adding index on category and title becouse they are the most freqvent rows for filtering searches
+
+CREATE INDEX `name_index` ON anax_product(`title`);
+EXPLAIN SELECT * FROM anax_product WHERE title LIKE 'mugg%';
+CREATE INDEX `cat_index` ON anax_product(`category`);
+
+
 
 -- Create order table
 -----------------------------------------------------
